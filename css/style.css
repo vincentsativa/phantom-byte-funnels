@@ -1,0 +1,92 @@
+:root {
+    --primary-purple: #9D4EDD;
+    --neon-green: #00FF88;
+    --dark-bg: #1a1a2e;
+    --light-text: #f0f0f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--dark-bg);
+    color: var(--light-text);
+    line-height: 1.6;
+}
+
+header {
+    padding: 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-purple), #5a189a);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--neon-green);
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    background: var(--neon-green);
+    color: var(--dark-bg);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+.funnels {
+    padding: 3rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.funnels h3 {
+    margin-bottom: 1rem;
+    color: var(--neon-green);
+}
+
+.funnels ul {
+    list-style: none;
+}
+
+.funnels li {
+    margin: 0.5rem 0;
+}
+
+.funnels a {
+    color: var(--primary-purple);
+    text-decoration: none;
+}
+
+.funnels a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid #333;
+    margin-top: 2rem;
+}
