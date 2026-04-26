@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5-Day AI Agent Debugging Challenge | Free Email Course</title>
+<meta name="description" content="Join the free 5-Day AI Agent Debugging Challenge. Learn to fix reasoning loops, context loss, tool failures & more. Day 5 unlocks the full playbook.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PDQCZE09E4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PDQCZE09E4');
+</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --purple: #9D4EDD;
+    --purple-dark: #7B2CBF;
+    --green: #00FF88;
+    --dark: #0a0a0a;
+    --dark-card: #111111;
+    --dark-border: #1a1a1a;
+    --light: #ffffff;
+    --gray: #888;
+    --amber: #f59e0b;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--dark);
+    color: var(--light);
+    line-height: 1.6;
+}
+
+.nav {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.logo { font-weight: 900; font-size: 24px; letter-spacing: -0.5px; }
+.logo .byte { color: var(--purple); }
+.nav-links { display: flex; gap: 24px; }
+.nav-links a { color: var(--gray); text-decoration: none; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+.nav-links a:hover { color: var(--light); }
+
+/* HERO - CHALLENGE STYLE */
+.hero {
+    text-align: center;
+    padding: 80px 20px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.challenge-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,158,11,0.12);
+    border: 1px solid rgba(245,158,11,0.3);
+    color: var(--amber);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 24px;
+    margin-bottom: 24px;
+}
+.hero h1 {
+    font-size: 48px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+.hero h1 .gradient {
+    background: linear-gradient(90deg, var(--amber), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+    font-size: 18px;
+    color: var(--gray);
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+/* DAY CARDS */
+.days-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+.days-section h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 40px;
+}
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+.day-card {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: 14px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.day-card:hover { transform: translateY(-3px); border-color: var(--purple); }
+.day-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--purple), var(--green));
+}
+.day-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 10px;
+}
+.day-card h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+.day-card p {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 12px;
+}
+.day-deliverable {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--green);
+    background: rgba(0,255,136,0.08);
+    padding: 4px 12px;
+    border-radius: 6px;
+}
+
+/* SPLIT: WHAT YOU GET + FORM */
+.split-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 60px;
+    align-items: center;
+}
+.benefits h2 {
+    font-size: 32px;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+}
+.benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+.benefit-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: rgba(157,78,221,0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+.benefit-item h4 { font-size: 15px; margin-bottom: 2px; }
+.benefit-item p { font-size: 13px; color: var(--gray); }
+
+/* FORM */
+.form-card {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: 16px;
+    padding: 36px;
+}
+.form-card h3 { font-size: 20px; margin-bottom: 6px; }
+.form-card .tagline { color: var(--gray); font-size: 13px; margin-bottom: 20px; }
+.form-group { margin-bottom: 12px; }
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    color: var(--light);
+    font-size: 15px;
+    outline: none;
+}
+.form-group input:focus { border-color: var(--purple); }
+.cta-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--amber), #d97706);
+    border: none;
+    border-radius: 10px;
+    color: var(--dark);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 6px;
+}
+.cta-btn:hover { box-shadow: 0 6px 24px rgba(245,158,11,0.3); }
+.privacy { text-align: center; color: var(--gray); font-size: 11px; margin-top: 10px; }
+
+/* URGENCY */
+.urgency-bar {
+    text-align: center;
+    padding: 16px;
+    background: rgba(245,158,11,0.08);
+    border-top: 1px solid rgba(245,158,11,0.2);
+    border-bottom: 1px solid rgba(245,158,11,0.2);
+    font-size: 14px;
+    color: var(--amber);
+}
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--gray);
+    font-size: 13px;
+    border-top: 1px solid var(--dark-border);
+    margin-top: 40px;
+}
+footer a { color: var(--purple); text-decoration: none; }
+
+@media (max-width: 768px) {
+    .split-section { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+    .days-grid { grid-template-columns: 1fr; }
+}
+</style>
+<!-- MailerLite Universal -->
+<script>
+(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');ml('account','2252055');
+</script>
+<!-- End MailerLite Universal -->
+</head>
+<body>
+
+<nav class="nav">
+    <div class="logo">PHANTOM<span class="byte">BYTE</span></div>
+    <div class="nav-links">
+        <a href="https://articles.phantom-byte.com" target="_blank">Articles</a>
+        <a href="https://phantom-byte.com" target="_blank">Services</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="challenge-badge">📧 5-Day Email Challenge</div>
+    <h1>Fix Your AI Agents<br><span class="gradient">One Failure at a Time</span></h1>
+    <p class="hero-sub">5 days. 5 failure signatures. 5 production-ready fixes. Delivered to your inbox with code samples, detection scripts, and the prevention architecture you need.</p>
+</section>
+
+<div class="days-section">
+    <h2>What You'll Build Each Day</h2>
+    <div class="days-grid">
+        <div class="day-card">
+            <div class="day-num">Day 1</div>
+            <h3>Reasoning Loop Paralysis</h3>
+            <p>Detect when your agent is burning tokens going nowhere. Build a loop counter and similarity checker.</p>
+            <div class="day-deliverable">✓ LoopDetector class + step limiter</div>
+        </div>
+        <div class="day-card">
+            <div class="day-num">Day 2</div>
+            <h3>Context Window Degradation</h3>
+            <p>Stop your agent from forgetting. Build checkpoint summarization and hierarchical memory.</p>
+            <div class="day-deliverable">✓ Token counter + checkpoint system</div>
+        </div>
+        <div class="day-card">
+            <div class="day-num">Day 3</div>
+            <h3>Tool Execution Cascade</h3>
+            <p>One tool fails, everything breaks. Build circuit breakers and schema validation.</p>
+            <div class="day-deliverable">✓ CircuitBreaker + result validator</div>
+        </div>
+        <div class="day-card">
+            <div class="day-num">Day 4</div>
+            <h3>Memory Poisoning</h3>
+            <p>Your agent learns wrong things and acts on them. Build source tagging and garbage collection.</p>
+            <div class="day-deliverable">✓ MemoryEntry system + purge script</div>
+        </div>
+        <div class="day-card">
+            <div class="day-num">Day 5</div>
+            <h3>Orchestration Deadlock</h3>
+            <p>Multi-agent gridlock. Build DAG modeling, timeout handoffs, and fallback paths.</p>
+            <div class="day-deliverable">✓ AgentHandoff + dependency validator</div>
+        </div>
+    </div>
+</div>
+
+<div class="urgency-bar">
+    🔔 Next cohort starts Monday — Join now to lock in your spot
+</div>
+
+<div class="split-section">
+    <div class="benefits">
+        <h2>By Day 5, You'll Have:</h2>
+        <div class="benefit-item">
+            <div class="benefit-icon">🛡️</div>
+            <div>
+                <h4>A Complete Monitoring Dashboard</h4>
+                <p>Loop detection, context alerts, tool health, memory quality — all in one view.</p>
+            </div>
+        </div>
+        <div class="benefit-item">
+            <div class="benefit-icon">🔧</div>
+            <div>
+                <h4>5 Plug-and-Play Python Classes</h4>
+                <p>LoopDetector, CircuitBreaker, MemoryEntry, AgentHandoff, and ContextManager.</p>
+            </div>
+        </div>
+        <div class="benefit-item">
+            <div class="benefit-icon">📋</div>
+            <div>
+                <h4>The Full Debugging Playbook</h4>
+                <p>25-page PDF with all 7 failure signatures, diagnostic flowchart, and recovery templates.</p>
+            </div>
+        </div>
+        <div class="benefit-item">
+            <div class="benefit-icon">⚡</div>
+            <div>
+                <h4>Prevention Architecture Blueprints</h4>
+                <p>DAG orchestration patterns, memory layering, and the checklist to tape to your monitor.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-card">
+        <h3>Start the Challenge</h3>
+        <p class="tagline">Free • 5 emails • No spam</p>
+        <form action="https://mailerlite-proxy-mvcy5omgra-uc.a.run.app/subscribe" method="POST">
+            <input type="hidden" name="funnel" value="challenge">
+            <input type="hidden" name="redirect" value="https://vincentsativa.com/funnels/thanks.html">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="you@company.com" required>
+            </div>
+            <button type="submit" class="cta-btn">Start Day 1 Now →</button>
+        </form>
+        <p class="privacy">Unsubscribe anytime. We never share your email.</p>
+    </div>
+</div>
+
+<footer>
+    © 2026 <a href="https://phantom-byte.com">PhantomByte</a> — Code From the Shadows
+</footer>
+
+</body>
+</html>

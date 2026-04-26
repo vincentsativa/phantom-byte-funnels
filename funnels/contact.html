@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — PhantomByte</title>
+    <meta name="description" content="Get in touch with PhantomByte. AI agent debugging, consulting, and custom solutions.">
+    <meta name="robots" content="noindex">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 40px; border-bottom: 1px solid #1a1a2e;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .logo { font-size: 20px; font-weight: 700; color: #9D4EDD; text-decoration: none; }
+        .logo span { color: #00FF88; }
+        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-links a { color: #a0a0b0; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .nav-links a:hover { color: #9D4EDD; }
+        .container {
+            max-width: 640px; margin: 60px auto; padding: 0 24px;
+        }
+        h1 { font-size: 32px; color: #9D4EDD; margin-bottom: 8px; }
+        .subtitle { color: #a0a0b0; font-size: 16px; margin-bottom: 40px; line-height: 1.5; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; color: #c0c0d0; font-size: 14px; margin-bottom: 6px; font-weight: 500; }
+        input, textarea {
+            width: 100%; padding: 12px 16px;
+            background: #1a1a2e; border: 1px solid #2a2a4a;
+            color: #e0e0e0; border-radius: 8px; font-size: 15px;
+            transition: border-color 0.2s;
+        }
+        input:focus, textarea:focus { outline: none; border-color: #9D4EDD; }
+        textarea { resize: vertical; min-height: 120px; }
+        .cta-btn {
+            width: 100%; padding: 14px; border: none; border-radius: 8px;
+            background: #9D4EDD; color: #fff; font-size: 16px; font-weight: 600;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .cta-btn:hover { background: #b86aff; }
+        .footer { text-align: center; padding: 40px; color: #606070; font-size: 13px; }
+    </style>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PDQCZE09E4"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PDQCZE09E4');</script>
+    <!-- MailerLite Universal -->
+    <script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');ml('account','2252055');
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">Phantom<span>Byte</span></a>
+        <div class="nav-links">
+            <a href="https://articles.phantom-byte.com">Articles</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Get in Touch</h1>
+        <p class="subtitle">Have a project, question, or just want to talk AI agents? Drop us a line.</p>
+        <form action="https://mailerlite-proxy-mvcy5omgra-uc.a.run.app/contact" method="POST">
+            <input type="hidden" name="redirect" value="https://vincentsativa.com/funnels/thanks.html">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@company.com" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell us what you're working on..." required></textarea>
+            </div>
+            <button type="submit" class="cta-btn">Send Message →</button>
+        </form>
+    </div>
+    <div class="footer">
+        PhantomByte — Code from the Shadows
+    </div>
+</body>
+</html>

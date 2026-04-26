@@ -3,43 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhantomByte - AI That Actually Works</title>
-    <meta name="description" content="Practical AI tools and guides for developers and marketers.">
-    <link rel="stylesheet" href="css/style.css">
+    <title>PhantomByte — AI That Actually Works</title>
+    <meta name="description" content="Practical AI agent tools, debugging guides, and consulting from PhantomByte. Built by Vincent Sativa.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 40px; border-bottom: 1px solid #1a1a2e;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .logo { font-size: 20px; font-weight: 700; color: #9D4EDD; text-decoration: none; }
+        .logo span { color: #00FF88; }
+        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-links a { color: #a0a0b0; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .nav-links a:hover { color: #9D4EDD; }
+
+        .hero {
+            max-width: 1200px; margin: 0 auto; padding: 100px 40px 60px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 48px; color: #fff; margin-bottom: 16px;
+            background: linear-gradient(135deg, #9D4EDD 0%, #00FF88 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 18px; color: #a0a0b0; max-width: 600px; margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+        .hero .sub {
+            font-size: 14px; color: #606070; margin-top: 8px;
+        }
+        .btn-primary {
+            display: inline-block; padding: 14px 36px;
+            background: #9D4EDD; color: #fff; text-decoration: none;
+            border-radius: 8px; font-weight: 600; transition: background 0.2s;
+        }
+        .btn-primary:hover { background: #b86aff; }
+        .btn-secondary {
+            display: inline-block; padding: 14px 36px;
+            background: transparent; color: #9D4EDD; text-decoration: none;
+            border-radius: 8px; font-weight: 600; border: 1px solid #9D4EDD;
+            transition: all 0.2s; margin-left: 12px;
+        }
+        .btn-secondary:hover { background: #1a1a2e; }
+
+        .section {
+            max-width: 900px; margin: 0 auto; padding: 60px 40px;
+        }
+        .section h2 {
+            font-size: 28px; color: #9D4EDD; margin-bottom: 32px; text-align: center;
+        }
+        .funnel-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px; margin-top: 20px;
+        }
+        .funnel-card {
+            background: #1a1a2e; border: 1px solid #2a2a4a;
+            border-radius: 12px; padding: 28px; transition: border-color 0.2s;
+        }
+        .funnel-card:hover { border-color: #9D4EDD; }
+        .funnel-card h3 { font-size: 18px; color: #fff; margin-bottom: 10px; }
+        .funnel-card p { font-size: 14px; color: #808090; margin-bottom: 16px; line-height: 1.5; }
+        .funnel-card .tag {
+            display: inline-block; padding: 4px 10px; border-radius: 4px;
+            font-size: 11px; font-weight: 600; margin-bottom: 12px;
+        }
+        .tag-tofu { background: #1a3a2e; color: #00FF88; }
+        .tag-mofu { background: #2a1a4e; color: #b86aff; }
+        .tag-bofu { background: #3a1a1e; color: #ff6b6b; }
+        .funnel-card a {
+            color: #9D4EDD; text-decoration: none; font-weight: 600; font-size: 14px;
+        }
+        .funnel-card a:hover { color: #b86aff; }
+
+        .footer {
+            text-align: center; padding: 40px; color: #606070; font-size: 13px;
+            border-top: 1px solid #1a1a2e; max-width: 1200px; margin: 0 auto;
+        }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 32px; }
+            .nav-links { gap: 16px; }
+            .btn-secondary { margin-left: 0; margin-top: 12px; display: inline-block; }
+        }
+    </style>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PDQCZE09E4"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-PDQCZE09E4');
-    </script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PDQCZE09E4');</script>
 </head>
 <body>
-    <header>
-        <h1>PhantomByte</h1>
-        <p>AI tools that don't suck</p>
-    </header>
+    <nav>
+        <a href="/" class="logo">Phantom<span>Byte</span></a>
+        <div class="nav-links">
+            <a href="https://articles.phantom-byte.com">Articles</a>
+            <a href="funnels/contact.html">Contact</a>
+        </div>
+    </nav>
 
-    <main>
-        <section class="hero">
-            <h2>Turn AI Hype Into Actual Results</h2>
-            <p>Practical guides, tools, and workflows for developers who are tired of AI fluff.</p>
-            <a href="#funnels" class="cta-button">Explore Resources</a>
-        </section>
+    <div class="hero">
+        <h1>AI That Actually Works</h1>
+        <p>Practical debugging guides, diagnostic tools, and consulting for developers building production AI agents — no fluff, just code from the shadows.</p>
+        <p class="sub">A project by Vincent Sativa</p>
+        <div style="margin-top:24px;">
+            <a href="https://articles.phantom-byte.com" class="btn-primary">Explore Articles →</a>
+            <a href="#funnels" class="btn-secondary">Free Tools ↓</a>
+        </div>
+    </div>
 
-        <section id="funnels" class="funnels">
-            <h3>Available Funnels</h3>
-            <ul>
-                <li><a href="funnels/ai-agent-guide/">AI Agent Guide</a></li>
-            </ul>
-        </section>
-    </main>
+    <div class="section" id="funnels">
+        <h2>Free AI Agent Resources</h2>
+        <div class="funnel-grid">
+            <div class="funnel-card">
+                <span class="tag tag-tofu">TOFU • Free Download</span>
+                <h3>AI Agent Debugging Playbook</h3>
+                <p>Fix 7 critical failure modes: reasoning loops, context degradation, tool failures & more. Includes diagnostic flowchart.</p>
+                <a href="funnels/01-playbook-lead-magnet.html">Get the Playbook →</a>
+            </div>
+            <div class="funnel-card">
+                <span class="tag tag-tofu">TOFU • Free Download</span>
+                <h3>AI Agent Diagnostic Flowchart</h3>
+                <p>Visual step-by-step troubleshooting guide. Identify and fix agent failures in minutes with our one-page flowchart.</p>
+                <a href="funnels/02-diagnostic-flowchart-squeeze.html">Download Flowchart →</a>
+            </div>
+            <div class="funnel-card">
+                <span class="tag tag-mofu">MOFU • Free Course</span>
+                <h3>5-Day AI Debugging Challenge</h3>
+                <p>Free email course covering reasoning loops, context loss, tool failures, and more. Day 5 unlocks the full playbook.</p>
+                <a href="funnels/03-5-day-challenge-email.html">Start the Challenge →</a>
+            </div>
+            <div class="funnel-card">
+                <span class="tag tag-bofu">BOFU • Free Audit</span>
+                <h3>AI Agent Audit Service</h3>
+                <p>Get a professional audit of your agent systems. We diagnose failures, optimize performance, and stop the money burn.</p>
+                <a href="funnels/04-free-agent-audit-application.html">Apply for Audit →</a>
+            </div>
+        </div>
+    </div>
 
-    <footer>
-        <p>&copy; 2026 PhantomByte. Built with GitHub Pages.</p>
-    </footer>
-
-    <script src="js/main.js"></script>
+    <div class="footer">
+        PhantomByte — Code from the Shadows<br>
+        <span style="color:#404050;">vincentsativa.com © 2026</span>
+    </div>
 </body>
 </html>

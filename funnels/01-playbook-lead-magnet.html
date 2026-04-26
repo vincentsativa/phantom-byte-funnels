@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Agent Debugging Playbook | 7 Failure Modes Fixed</title>
+<meta name="description" content="Download our free AI Agent Debugging Playbook. Learn to fix 7 critical failure modes: reasoning loops, context degradation, tool failures & more.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PDQCZE09E4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PDQCZE09E4');
+</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --purple: #9D4EDD;
+    --purple-dark: #7B2CBF;
+    --green: #00FF88;
+    --dark: #0a0a0a;
+    --dark-card: #111111;
+    --dark-border: #1a1a1a;
+    --light: #ffffff;
+    --gray: #888;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--dark);
+    color: var(--light);
+    line-height: 1.6;
+}
+
+/* NAV */
+.nav {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.logo { font-weight: 900; font-size: 24px; letter-spacing: -0.5px; }
+.logo .byte { color: var(--purple); }
+.nav-links { display: flex; gap: 24px; }
+.nav-links a { color: var(--gray); text-decoration: none; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+.nav-links a:hover { color: var(--light); }
+
+/* HERO */
+.hero {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 20px 40px;
+    text-align: center;
+}
+.hero-badge {
+    display: inline-block;
+    background: rgba(157,78,221,0.15);
+    border: 1px solid rgba(157,78,221,0.3);
+    color: var(--purple);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+}
+.hero h1 {
+    font-size: 52px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+.hero h1 .gradient {
+    background: linear-gradient(90deg, var(--green), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+    font-size: 20px;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto 16px;
+}
+.hero-sub strong { color: var(--light); }
+
+/* GHOST VISUAL */
+.ghost-visual {
+    text-align: center;
+    padding: 30px 0;
+    font-size: 100px;
+    filter: drop-shadow(0 0 40px rgba(157,78,221,0.4));
+}
+
+/* FORM CARD */
+.optin-card {
+    max-width: 520px;
+    margin: 0 auto 60px;
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: 16px;
+    padding: 40px;
+}
+.optin-card h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+.optin-card p {
+    color: var(--gray);
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+.form-group { margin-bottom: 16px; }
+.form-group label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gray);
+    margin-bottom: 6px;
+}
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    color: var(--light);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.form-group input:focus {
+    border-color: var(--purple);
+}
+.cta-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+    border: none;
+    border-radius: 10px;
+    color: var(--light);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    margin-top: 8px;
+}
+.cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(157,78,221,0.4);
+}
+.privacy {
+    text-align: center;
+    color: var(--gray);
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+/* WHAT'S INSIDE */
+.section { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+.section-tag {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 16px;
+}
+.section h2 {
+    font-size: 36px;
+    margin-bottom: 32px;
+    letter-spacing: -0.5px;
+}
+.failure-grid {
+    display: grid;
+    gap: 16px;
+}
+.failure-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+}
+.failure-item:hover { border-color: var(--purple); }
+.failure-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: rgba(157,78,221,0.15);
+    border: 1px solid rgba(157,78,221,0.3);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--purple);
+}
+.failure-text h4 { font-size: 16px; margin-bottom: 4px; }
+.failure-text p { font-size: 14px; color: var(--gray); }
+.failure-text .tag {
+    display: inline-block;
+    font-size: 11px;
+    color: var(--green);
+    background: rgba(0,255,136,0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 6px;
+}
+
+/* SOCIAL PROOF */
+.proof-bar {
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid var(--dark-border);
+    border-bottom: 1px solid var(--dark-border);
+    margin: 20px 0;
+}
+.proof-bar .stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+.proof-bar .stat-num {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--green);
+}
+.proof-bar .stat-label {
+    font-size: 12px;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* BOTTOM CTA */
+.bottom-cta {
+    text-align: center;
+    padding: 80px 20px;
+    border-top: 1px solid var(--dark-border);
+}
+.bottom-cta h2 { font-size: 32px; margin-bottom: 16px; }
+.bottom-cta p { color: var(--gray); margin-bottom: 32px; }
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--gray);
+    font-size: 13px;
+    border-top: 1px solid var(--dark-border);
+}
+footer a { color: var(--purple); text-decoration: none; }
+</style>
+<!-- MailerLite Universal -->
+<script>
+(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');ml('account','2252055');
+</script>
+<!-- End MailerLite Universal -->
+</head>
+<body>
+
+<nav class="nav">
+    <div class="logo">PHANTOM<span class="byte">BYTE</span></div>
+    <div class="nav-links">
+        <a href="https://articles.phantom-byte.com" target="_blank">Articles</a>
+        <a href="https://phantom-byte.com" target="_blank">Services</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-badge">2026 Edition • 25 Pages</div>
+    <h1>Stop Your AI Agents From <span class="gradient">Burning Money</span> in the Dark</h1>
+    <p class="hero-sub">The 7 failure signatures that kill agent systems — and the <strong>production-ready fixes</strong> that actually work. Written from 18 months of real failures, not theory.</p>
+</section>
+
+<div class="ghost-visual">👻</div>
+
+<div class="optin-card">
+    <h3>Get the Free Playbook</h3>
+    <p>PDF download • Diagnostic flowchart • Recovery templates</p>
+    <form action="https://mailerlite-proxy-mvcy5omgra-uc.a.run.app/subscribe" method="POST">
+        <input type="hidden" name="funnel" value="playbook">
+        <input type="hidden" name="redirect" value="https://vincentsativa.com/funnels/thanks.html">
+        <div class="form-group">
+            <label for="playbook-name">Name</label>
+            <input type="text" id="playbook-name" name="name" placeholder="Your first name" required>
+        </div>
+        <div class="form-group">
+            <label for="playbook-email">Email</label>
+            <input type="email" id="playbook-email" name="email" placeholder="you@company.com" required>
+        </div>
+        <!-- Honeypot for spam protection -->
+        <input type="text" name="_gotcha" style="display:none">
+        <button type="submit" class="cta-btn">Download the Playbook →</button>
+    </form>
+    <p class="privacy">No spam. Unsubscribe anytime. We respect your inbox.</p>
+</div>
+
+<div class="proof-bar">
+    <div class="stats">
+        <div>
+            <div class="stat-num">7</div>
+            <div class="stat-label">Failure Signatures</div>
+        </div>
+        <div>
+            <div class="stat-num">25</div>
+            <div class="stat-label">Pages</div>
+        </div>
+        <div>
+            <div class="stat-num">18</div>
+            <div class="stat-label">Months of Battle Testing</div>
+        </div>
+        <div>
+            <div class="stat-num">20+</div>
+            <div class="stat-label">Agents Run Daily</div>
+        </div>
+    </div>
+</div>
+
+<section class="section">
+    <div class="section-tag">What's Inside</div>
+    <h2>The 7 Failure Signatures<br>That Kill Agent Systems</h2>
+    <div class="failure-grid">
+        <div class="failure-item">
+            <div class="failure-num">1</div>
+            <div class="failure-text">
+                <h4>Reasoning Loop Paralysis</h4>
+                <p>Your agent looks busy. It's going nowhere. The silent, expensive killer.</p>
+                <span class="tag">Loop detection • Step limits • Cost ceilings</span>
+            </div>
+        </div>
+        <div class="failure-item">
+            <div class="failure-num">2</div>
+            <div class="failure-text">
+                <h4>Context Window Degradation</h4>
+                <p>Sharp at message 1. Hallucinating by message 40. The gradual death.</p>
+                <span class="tag">Checkpoint summarization • Hierarchical memory</span>
+            </div>
+        </div>
+        <div class="failure-item">
+            <div class="failure-num">3</div>
+            <div class="failure-text">
+                <h4>Tool Execution Failure Cascade</h4>
+                <p>One tool fails. Agent keeps going. Results compound into garbage.</p>
+                <span class="tag">Circuit breakers • Schema validation • Retry logic</span>
+            </div>
+        </div>
+        <div class="failure-item">
+            <div class="failure-num">4</div>
+            <div class="failure-text">
+                <h4>Memory Poisoning</h4>
+                <p>Agent learns from interactions. It learns wrong things. Acts on them.</p>
+                <span class="tag">Source tagging • Garbage collection • Verification loops</span>
+            </div>
+        </div>
+        <div class="failure-item">
+            <div class="failure-num">5</div>
+            <div class="failure-text">
+                <h4>Orchestration Deadlock</h4>
+                <p>Multiple agents, shared resources. Everyone waits. Nobody moves.</p>
+                <span class="tag">DAG modeling • Timeout handoffs • Fallback paths</span>
+            </div>
+        </div>
+        <div class="failure-item">
+            <div class="failure-num">6</div>
+            <div class="failure-text">
+                <h4>Session State Loss</h4>
+                <p>Agent restarts mid-pipeline. All progress gone. Start from scratch.</p>
+                <span class="tag">LangGraph checkpoints • State persistence • Recovery</span>
+            </div>
+        </div>
+        <div class="failure-item">
+            <div class="failure-num">7</div>
+            <div class="failure-text">
+                <h4>Output Corruption at Scale</h4>
+                <p>Agent works fine at 10 tasks. At 1,000? Quality collapses.</p>
+                <span class="tag">Quality gates • Scaling tests • Grading rubrics</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="bottom-cta">
+    <h2>Stop Debugging in the Dark</h2>
+    <p>Get the playbook, the flowchart, and the templates. Free.</p>
+    <a href="#optin-scroll" onclick="document.querySelector('.optin-card').scrollIntoView({behavior:'smooth'})" style="display:inline-block;padding:16px 40px;background:linear-gradient(135deg,var(--green),#00cc6a);color:var(--dark);font-weight:700;border-radius:10px;text-decoration:none;font-size:16px;letter-spacing:0.5px;">Get the Playbook →</a>
+</div>
+
+<footer>
+    <p>© 2026 <a href="https://phantom-byte.com">PhantomByte</a> — Code From the Shadows</p>
+</footer>
+
+</body>
+</html>
