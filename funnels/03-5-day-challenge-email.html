@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>5-Day AI Agent Debugging Challenge | Free Email Course</title>
 <meta name="description" content="Join the free 5-Day AI Agent Debugging Challenge. Learn to fix reasoning loops, context loss, tool failures & more. Day 5 unlocks the full playbook.">
 <!-- Google tag (gtag.js) -->
@@ -239,10 +239,37 @@ footer {
 }
 footer a { color: var(--purple); text-decoration: none; }
 
+/* MOBILE OPTIMIZATION */
+html { -webkit-text-size-adjust: 100%; }
 @media (max-width: 768px) {
-    .split-section { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 34px; }
-    .days-grid { grid-template-columns: 1fr; }
+    body { font-size: 16px; }
+    .nav { padding: 14px 20px; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 12px; }
+    .hero { padding: 50px 16px 30px; }
+    .hero h1 { font-size: 30px; }
+    .hero-sub { font-size: 16px; }
+    .days-section { padding: 40px 16px; }
+    .days-section h2 { font-size: 24px; margin-bottom: 28px; }
+    .days-grid { grid-template-columns: 1fr; gap: 12px; }
+    .day-card { padding: 22px 20px; }
+    .split-section { grid-template-columns: 1fr; gap: 32px; padding: 40px 16px; }
+    .benefits h2 { font-size: 24px; }
+    .form-card { padding: 28px 24px; }
+    .form-group input { font-size: 16px; }
+    .cta-btn { min-height: 48px; }
+    .urgency-bar { padding: 14px 16px; font-size: 13px; }
+}
+@media (max-width: 480px) {
+    .nav { flex-wrap: wrap; gap: 8px; justify-content: center; padding: 12px 16px; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .hero h1 { font-size: 26px; }
+    .day-card h3 { font-size: 15px; }
+}
+/* iOS safe areas */
+@supports (padding: max(0px)) {
+    body { padding-top: env(safe-area-inset-top, 0px); }
+    .nav { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
 }
 </style>
 <!-- MailerLite Universal -->

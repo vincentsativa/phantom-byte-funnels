@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Free AI Agent Diagnostic Flowchart | Instant Problem Solver</title>
 <meta name="description" content="Get our free AI Agent Diagnostic Flowchart. Quickly identify & fix agent failures. Visual step-by-step troubleshooting for LLM & autonomous agents.">
 <!-- Google tag (gtag.js) -->
@@ -201,11 +201,37 @@ footer {
 }
 footer a { color: var(--purple); text-decoration: none; }
 
+/* MOBILE OPTIMIZATION */
+html { -webkit-text-size-adjust: 100%; }
 @media (max-width: 768px) {
+    body { font-size: 16px; }
+    .nav { padding: 14px 20px; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 12px; }
     .two-col { grid-template-columns: 1fr; }
-    .pain-side { padding: 40px 20px; border-right: none; border-bottom: 1px solid var(--dark-border); }
-    .flowchart-side { padding: 40px 20px; }
-    .pain-side h1 { font-size: 32px; }
+    .pain-side { padding: 40px 20px 30px; border-right: none; border-bottom: 1px solid var(--dark-border); }
+    .pain-side h1 { font-size: 28px; }
+    .pain-point { padding: 12px; }
+    .pain-quote { padding: 14px; font-size: 13px; }
+    .flowchart-side { padding: 30px 20px 40px; }
+    .flowchart-preview { max-width: 300px; margin-bottom: 30px; }
+    .flow-node { font-size: 11px; padding: 10px 14px; }
+    .flow-node.decision { clip-path: none; border-radius: 8px; padding: 12px 14px; }
+    .optin-form h3 { font-size: 18px; }
+    .form-group input { font-size: 16px; }
+    .cta-btn { min-height: 48px; }
+}
+@media (max-width: 480px) {
+    .nav { flex-wrap: wrap; gap: 8px; justify-content: center; padding: 12px 16px; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .pain-side h1 { font-size: 24px; }
+    .pain-point { gap: 10px; }
+    .pain-point .icon { font-size: 16px; }
+}
+/* iOS safe areas */
+@supports (padding: max(0px)) {
+    body { padding-top: env(safe-area-inset-top, 0px); }
+    .nav { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
 }
 </style>
 <!-- MailerLite Universal -->

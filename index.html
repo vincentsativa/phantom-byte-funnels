@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>PhantomByte — AI That Actually Works</title>
     <meta name="description" content="Practical AI agent tools, debugging guides, and consulting from PhantomByte. Built by Vincent Sativa.">
     <style>
@@ -88,10 +88,32 @@
             text-align: center; padding: 40px; color: #606070; font-size: 13px;
             border-top: 1px solid #1a1a2e; max-width: 1200px; margin: 0 auto;
         }
-        @media (max-width: 640px) {
-            .hero h1 { font-size: 32px; }
-            .nav-links { gap: 16px; }
+        /* MOBILE OPTIMIZATION */
+        html { -webkit-text-size-adjust: 100%; }
+        @media (max-width: 768px) {
+            body { font-size: 16px; }
+            nav { padding: 14px 20px; }
+            .nav-links { gap: 14px; }
+            .nav-links a { font-size: 13px; }
+            .hero { padding: 50px 20px 40px; }
+            .hero h1 { font-size: 30px; }
+            .hero p { font-size: 16px; }
+            .section { padding: 40px 20px; }
+            .section h2 { font-size: 24px; }
+            .funnel-grid { grid-template-columns: 1fr; }
             .btn-secondary { margin-left: 0; margin-top: 12px; display: inline-block; }
+            .btn-primary, .btn-secondary { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            nav { flex-wrap: wrap; gap: 10px; justify-content: center; padding: 12px 16px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+            .hero h1 { font-size: 24px; }
+            .hero .sub { font-size: 12px; }
+        }
+        /* iOS safe areas */
+        @supports (padding: max(0px)) {
+            body { padding-top: env(safe-area-inset-top, 0px); }
+            nav { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
         }
     </style>
     <!-- Google Analytics -->

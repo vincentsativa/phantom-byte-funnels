@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Free AI Agent Debugging Playbook | 7 Failure Modes Fixed</title>
 <meta name="description" content="Download our free AI Agent Debugging Playbook. Learn to fix 7 critical failure modes: reasoning loops, context degradation, tool failures & more.">
 <!-- Google tag (gtag.js) -->
@@ -259,6 +259,46 @@ footer {
     border-top: 1px solid var(--dark-border);
 }
 footer a { color: var(--purple); text-decoration: none; }
+
+/* MOBILE OPTIMIZATION */
+html { -webkit-text-size-adjust: 100%; }
+@media (max-width: 768px) {
+    body { font-size: 16px; }
+    .nav { padding: 14px 20px; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 12px; }
+    .hero { padding: 50px 20px 30px; }
+    .hero h1 { font-size: 32px; }
+    .hero-sub { font-size: 16px; }
+    .ghost-visual { font-size: 60px; padding: 16px 0; }
+    .optin-card { padding: 28px 20px; margin: 0 16px 40px; }
+    .optin-card h3 { font-size: 18px; }
+    .section { padding: 40px 20px; }
+    .section h2 { font-size: 26px; }
+    .failure-grid { gap: 12px; }
+    .failure-item { padding: 14px; }
+    .proof-bar .stats { gap: 24px; }
+    .proof-bar .stat-num { font-size: 22px; }
+    .bottom-cta { padding: 50px 20px; }
+    .bottom-cta h2 { font-size: 24px; }
+    .cta-btn { min-height: 48px; }
+    .form-group input { font-size: 16px; }
+}
+@media (max-width: 480px) {
+    .nav { flex-wrap: wrap; gap: 8px; justify-content: center; padding: 12px 16px; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .hero h1 { font-size: 26px; }
+    .ghost-visual { font-size: 48px; padding: 10px 0; }
+    .optin-card { padding: 24px 16px; margin: 0 12px 30px; border-radius: 12px; }
+    .proof-bar .stats { gap: 16px; flex-direction: column; }
+    .failure-item { flex-direction: column; }
+    .failure-num { width: 28px; height: 28px; font-size: 12px; }
+}
+/* iOS safe areas */
+@supports (padding: max(0px)) {
+    body { padding-top: env(safe-area-inset-top, 0px); }
+    .nav { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
+}
 </style>
 <!-- MailerLite Universal -->
 <script>
