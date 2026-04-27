@@ -122,8 +122,15 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PDQCZE09E4"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PDQCZE09E4');</script>
-    <!-- Force scroll to top on load -->
-    <script>if ('scrollRestoration' in history) history.scrollRestoration='manual';window.scrollTo(0,0);</script>
+    <!-- Force scroll to top on load -- beats browser scroll restoration (Chrome, etc) -->
+    <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    // Immediate + after load + on pageshow (bfcache) = beats all browsers
+    function forceTop() { window.scrollTo(0, 0); }
+    forceTop();
+    window.addEventListener('load', function() { requestAnimationFrame(forceTop); });
+    window.addEventListener('pageshow', function() { requestAnimationFrame(forceTop); });
+    </script>
 </head>
 <body>
     <nav>
