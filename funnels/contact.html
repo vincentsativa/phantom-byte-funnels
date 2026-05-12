@@ -77,7 +77,7 @@
     (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');ml('account','2252055');
     </script>
 </head>
-<body>
+<body data-page="contact">
     <nav>
         <a href="/" class="logo">Phantom<span>Byte</span></a>
         <div class="nav-links">
@@ -88,8 +88,8 @@
     <div class="container">
         <h1>Get in Touch</h1>
         <p class="subtitle">Have a project, question, or just want to talk AI agents? Drop us a line.</p>
-        <form action="https://mailerlite-proxy-mvcy5omgra-uc.a.run.app/contact" method="POST">
-            <input type="hidden" name="redirect" value="https://vincentsativa.com/funnels/thanks.html">
+        <form action="https://mailerlite-proxy-1091380733401.us-east1.run.app/api/subscribe" method="POST" data-funnel="contact" id="contact-form">
+            <input type="hidden" name="redirect" value="ty-04.html">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -103,10 +103,13 @@
                 <textarea id="message" name="message" placeholder="Tell us what you're working on..." required></textarea>
             </div>
             <button type="submit" class="cta-btn">Send Message →</button>
+        <div class="form-message error" style="display:none;color:#ff4444;font-size:13px;margin-top:10px;text-align:center;"></div>
+        <div class="form-message success" style="display:none;color:#00FF88;font-size:13px;margin-top:10px;text-align:center;"></div>
         </form>
     </div>
     <div class="footer">
         PhantomByte — Code from the Shadows
     </div>
+<script src="../js/main.js"></script>
 </body>
 </html>

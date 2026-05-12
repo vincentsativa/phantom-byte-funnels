@@ -278,7 +278,7 @@ html { -webkit-text-size-adjust: 100%; }
 </script>
 <!-- End MailerLite Universal -->
 </head>
-<body>
+<body data-page="03-challenge">
 
 <nav class="nav">
     <div class="logo">PHANTOM<span class="byte">BYTE</span></div>
@@ -371,9 +371,9 @@ html { -webkit-text-size-adjust: 100%; }
     <div class="form-card">
         <h3>Start the Challenge</h3>
         <p class="tagline">Free • 5 emails • No spam</p>
-        <form action="https://mailerlite-proxy-mvcy5omgra-uc.a.run.app/subscribe" method="POST">
+        <form action="https://mailerlite-proxy-1091380733401.us-east1.run.app/api/subscribe" method="POST" data-funnel="challenge" id="funnel-form-challenge">
             <input type="hidden" name="funnel" value="challenge">
-            <input type="hidden" name="redirect" value="https://vincentsativa.com/funnels/thanks.html">
+            <input type="hidden" name="redirect" value="ty-03.html">
             <div class="form-group">
                 <input type="text" name="name" placeholder="Your name" required>
             </div>
@@ -381,6 +381,8 @@ html { -webkit-text-size-adjust: 100%; }
                 <input type="email" name="email" placeholder="you@company.com" required>
             </div>
             <button type="submit" class="cta-btn">Start Day 1 Now →</button>
+            <div class="form-message error" style="display:none;color:#ff4444;font-size:13px;margin-top:10px;text-align:center;"></div>
+            <div class="form-message success" style="display:none;color:#00FF88;font-size:13px;margin-top:10px;text-align:center;"></div>
         </form>
         <p class="privacy">Unsubscribe anytime. We never share your email.</p>
     </div>
@@ -390,5 +392,6 @@ html { -webkit-text-size-adjust: 100%; }
     © 2026 <a href="https://phantom-byte.com">PhantomByte</a> — Code From the Shadows
 </footer>
 
+<script src="../js/main.js"></script>
 </body>
 </html>

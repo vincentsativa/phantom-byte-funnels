@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Skip the Line — Free AI Agent Audit | PhantomByte</title>
+<meta name="description" content="Skip the self-guided challenge. Get a professional audit of your AI agent systems — free.">
+<meta name="robots" content="noindex">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PDQCZE09E4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PDQCZE09E4');</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --purple: #9D4EDD; --purple-dark: #7B2CBF; --green: #00FF88; --dark: #0a0a0a; --dark-card: #111111; --dark-border: #1a1a1a; --light: #ffffff; --gray: #888; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--dark); color: var(--light); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+.nav { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.logo { font-weight: 900; font-size: 24px; letter-spacing: -0.5px; }
+.logo .byte { color: var(--purple); }
+.nav-links { display: flex; gap: 24px; }
+.nav-links a { color: var(--gray); text-decoration: none; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+.nav-links a:hover { color: var(--light); }
+.upsell-section { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 60px 20px; max-width: 580px; margin: 0 auto; }
+.upsell-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(157,78,221,0.12); border: 1px solid rgba(157,78,221,0.3); color: var(--purple); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 8px 20px; border-radius: 24px; margin-bottom: 28px; }
+.upsell-section h1 { font-size: 40px; line-height: 1.1; margin-bottom: 16px; letter-spacing: -1px; }
+.upsell-section h1 .gradient { background: linear-gradient(90deg, var(--purple), var(--green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.upsell-section .desc { font-size: 17px; color: var(--gray); margin-bottom: 36px; line-height: 1.6; }
+.upsell-benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 36px; width: 100%; }
+.upsell-benefit { padding: 16px; background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 10px; text-align: left; }
+.upsell-benefit .check { color: var(--green); font-size: 14px; margin-right: 6px; }
+.upsell-benefit span { font-size: 13px; color: var(--light); }
+.upsell-benefit .detail { font-size: 12px; color: var(--gray); margin-top: 2px; padding-left: 20px; }
+.testimonial { margin: 0 0 36px; padding: 24px; background: rgba(157,78,221,0.05); border: 1px solid rgba(157,78,221,0.15); border-radius: 12px; font-style: italic; color: var(--gray); font-size: 14px; max-width: 480px; }
+.testimonial strong { color: var(--light); font-style: normal; }
+.cta-group { display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; max-width: 380px; }
+.cta-yes { display: block; width: 100%; padding: 16px 24px; background: linear-gradient(135deg, var(--purple), var(--purple-dark)); color: var(--light); text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 16px; text-align: center; transition: transform 0.15s, box-shadow 0.15s; }
+.cta-yes:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(157,78,221,0.4); }
+.cta-no { color: var(--gray); font-size: 14px; text-decoration: none; }
+.cta-no:hover { color: var(--light); }
+footer { text-align: center; padding: 30px 20px; color: var(--gray); font-size: 13px; border-top: 1px solid var(--dark-border); }
+footer a { color: var(--purple); text-decoration: none; }
+html { -webkit-text-size-adjust: 100%; }
+@media (max-width: 768px) {
+    body { font-size: 16px; }
+    .nav { padding: 14px 20px; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 12px; }
+    .upsell-section { padding: 50px 20px; }
+    .upsell-section h1 { font-size: 28px; }
+    .upsell-section .desc { font-size: 15px; }
+    .upsell-benefits { grid-template-columns: 1fr; }
+    .cta-yes { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; }
+    .testimonial { padding: 18px; font-size: 13px; }
+}
+@media (max-width: 480px) {
+    .nav { flex-wrap: wrap; gap: 8px; justify-content: center; padding: 12px 16px; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .upsell-section h1 { font-size: 24px; }
+}
+@supports (padding: max(0px)) {
+    body { padding-top: env(safe-area-inset-top, 0px); }
+    .nav { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
+}
+</style>
+</head>
+<body data-page="upsell-challenge-audit">
+
+<nav class="nav">
+    <div class="logo">PHANTOM<span class="byte">BYTE</span></div>
+    <div class="nav-links">
+        <a href="https://articles.phantom-byte.com" target="_blank">Articles</a>
+        <a href="https://phantom-byte.com" target="_blank">Services</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<div class="upsell-section">
+    <div class="upsell-badge">🔍 Skip the Line</div>
+    <h1>Let Us Do the<br><span class="gradient">Diagnostic For You</span></h1>
+    <p class="desc">The challenge teaches you to fish. But if you want a professional to scan your actual production agents right now — we'll do it for free.</p>
+
+    <div class="testimonial">
+        "We run the 7-signature diagnostic on YOUR stack. Not generic advice. Not a template. Your agents, your failure points, your fix report — with code."<br><strong>— PhantomByte Audit Team</strong>
+    </div>
+
+    <div class="upsell-benefits">
+        <div class="upsell-benefit">
+            <span class="check">✓</span><span>7-Signature Full Scan</span>
+            <div class="detail">Every failure mode from the playbook applied to your agents</div>
+        </div>
+        <div class="upsell-benefit">
+            <span class="check">✓</span><span>Custom Fix Report</span>
+            <div class="detail">Prioritized vulnerabilities with code-level solutions</div>
+        </div>
+        <div class="upsell-benefit">
+            <span class="check">✓</span><span>30-Min Walkthrough Video</span>
+            <div class="detail">We walk you through every finding and the fix approach</div>
+        </div>
+        <div class="upsell-benefit">
+            <span class="check">✓</span><span>Zero Commitment</span>
+            <div class="detail">Free audit. No sales call. No catch.</div>
+        </div>
+    </div>
+
+    <div class="cta-group">
+        <a href="04-free-agent-audit-application.html" class="cta-yes" data-ga-action="upsell_accept" data-ga-label="upsell-2 → audit">Yes — Apply for Free Audit →</a>
+        <a href="ty-03.html" class="cta-no" data-ga-action="upsell_decline" data-ga-label="upsell-2 → ty-03">No thanks, I'll stick with the challenge →</a>
+    </div>
+</div>
+
+<footer>
+    © 2026 <a href="https://phantom-byte.com">PhantomByte</a> — Code From the Shadows
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -306,7 +306,7 @@ html { -webkit-text-size-adjust: 100%; }
 </script>
 <!-- End MailerLite Universal -->
 </head>
-<body>
+<body data-page="01-playbook">
 
 <nav class="nav">
     <div class="logo">PHANTOM<span class="byte">BYTE</span></div>
@@ -328,9 +328,9 @@ html { -webkit-text-size-adjust: 100%; }
 <div class="optin-card">
     <h3>Get the Free Playbook</h3>
     <p>PDF download • Diagnostic flowchart • Recovery templates</p>
-    <form action="https://mailerlite-proxy-mvcy5omgra-uc.a.run.app/subscribe" method="POST">
+    <form action="https://mailerlite-proxy-1091380733401.us-east1.run.app/api/subscribe" method="POST" data-funnel="playbook" id="funnel-form-playbook">
         <input type="hidden" name="funnel" value="playbook">
-        <input type="hidden" name="redirect" value="https://vincentsativa.com/funnels/thanks.html">
+        <input type="hidden" name="redirect" value="ty-01.html">
         <div class="form-group">
             <label for="playbook-name">Name</label>
             <input type="text" id="playbook-name" name="name" placeholder="Your first name" required>
@@ -342,6 +342,8 @@ html { -webkit-text-size-adjust: 100%; }
         <!-- Honeypot for spam protection -->
         <input type="text" name="_gotcha" style="display:none">
         <button type="submit" class="cta-btn">Download the Playbook →</button>
+        <div class="form-message error" style="display:none;color:#ff4444;font-size:13px;margin-top:10px;text-align:center;"></div>
+        <div class="form-message success" style="display:none;color:#00FF88;font-size:13px;margin-top:10px;text-align:center;"></div>
     </form>
     <p class="privacy">No spam. Unsubscribe anytime. We respect your inbox.</p>
 </div>
@@ -440,5 +442,6 @@ html { -webkit-text-size-adjust: 100%; }
     <p>© 2026 <a href="https://phantom-byte.com">PhantomByte</a> — Code From the Shadows</p>
 </footer>
 
+<script src="../js/main.js"></script>
 </body>
 </html>

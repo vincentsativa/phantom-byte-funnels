@@ -267,7 +267,7 @@ html { -webkit-text-size-adjust: 100%; }
 </script>
 <!-- End MailerLite Universal -->
 </head>
-<body>
+<body data-page="04-audit">
 
 <nav class="nav">
     <div class="logo">PHANTOM<span class="byte">BYTE</span></div>
@@ -308,9 +308,9 @@ html { -webkit-text-size-adjust: 100%; }
         <h2>Apply for Your Free Audit</h2>
         <p class="subtitle">Limited spots per month — we review every application.</p>
 
-        <form action="https://mailerlite-proxy-mvcy5omgra-uc.a.run.app/subscribe" method="POST">
+        <form action="https://mailerlite-proxy-1091380733401.us-east1.run.app/api/subscribe" method="POST" data-funnel="audit" id="funnel-form-audit">
             <input type="hidden" name="funnel" value="audit">
-            <input type="hidden" name="redirect" value="https://vincentsativa.com/funnels/thanks.html">
+            <input type="hidden" name="redirect" value="ty-04.html">
             <div class="form-row">
                 <div class="form-group">
                     <label for="audit-name">Name</label>
@@ -356,6 +356,8 @@ html { -webkit-text-size-adjust: 100%; }
 
             <input type="text" name="_gotcha" style="display:none">
             <button type="submit" class="cta-btn">Submit Application →</button>
+            <div class="form-message error" style="display:none;color:#ff4444;font-size:13px;margin-top:10px;text-align:center;"></div>
+            <div class="form-message success" style="display:none;color:#00FF88;font-size:13px;margin-top:10px;text-align:center;"></div>
         </form>
     </div>
 </div>
@@ -391,5 +393,6 @@ html { -webkit-text-size-adjust: 100%; }
     © 2026 <a href="https://phantom-byte.com">PhantomByte</a> — Code From the Shadows
 </footer>
 
+<script src="../js/main.js"></script>
 </body>
 </html>
