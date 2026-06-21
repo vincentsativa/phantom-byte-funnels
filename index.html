@@ -1,190 +1,628 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>PhantomByte — AI That Actually Works</title>
-    <meta name="description" content="Practical AI agent tools, debugging guides, and consulting from PhantomByte. Built by Vincent Sativa.">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0f;
-            color: #e0e0e0;
-            min-height: 100vh;
-        }
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.08);
-            max-width: 1200px; margin: 0 auto;
-        }
-        .logo { font-size: 24px; font-weight: 900; color: #9D4EDD; text-decoration: none; letter-spacing: -0.5px; }
-        .logo span { color: #00FF88; }
-        .nav-links { display: flex; gap: 24px; align-items: center; }
-        .nav-links a { color: #a0a0b0; text-decoration: none; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.2s; }
-        .nav-links a:hover { color: #fff; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PhantomByte: AI That Actually Works | AI Agent Debugging Guides, Tools &amp; Consulting</title>
+<meta name="description" content="Practical AI agent debugging guides, diagnostic tools, and consulting from PhantomByte. Fix reasoning loops, context loss, and tool failures. A project by Vincent Sativa.">
+<meta name="keywords" content="AI agent debugging, AI agent diagnostics, debug AI agents, AI agent failures, reasoning loops, context degradation, tool failures, AI agent audit, AI consulting, PhantomByte, Vincent Sativa, production AI agents">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#9D4EDD">
+<meta name="author" content="Vincent Sativa">
 
-        .hero {
-            max-width: 1200px; margin: 0 auto; padding: 100px 40px 60px;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 48px; color: #fff; margin-bottom: 16px;
-            background: linear-gradient(135deg, #9D4EDD 0%, #00FF88 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero p {
-            font-size: 18px; color: #a0a0b0; max-width: 600px; margin: 0 auto 32px;
-            line-height: 1.6;
-        }
-        .hero .sub {
-            font-size: 14px; color: #606070; margin-top: 8px;
-        }
-        .btn-primary {
-            display: inline-block; padding: 14px 36px;
-            background: #9D4EDD; color: #fff; text-decoration: none;
-            border-radius: 8px; font-weight: 600; transition: background 0.2s;
-        }
-        .btn-primary:hover { background: #b86aff; }
-        .btn-secondary {
-            display: inline-block; padding: 14px 36px;
-            background: transparent; color: #9D4EDD; text-decoration: none;
-            border-radius: 8px; font-weight: 600; border: 1px solid #9D4EDD;
-            transition: all 0.2s; margin-left: 12px;
-        }
-        .btn-secondary:hover { background: #1a1a2e; }
+<!-- Canonical URL -->
+<link rel="canonical" href="https://vincentsativa.com/">
 
-        .section {
-            max-width: 900px; margin: 0 auto; padding: 60px 40px;
-        }
-        .section h2 {
-            font-size: 28px; color: #9D4EDD; margin-bottom: 32px; text-align: center;
-        }
-        .funnel-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px; margin-top: 20px;
-        }
-        .funnel-card {
-            background: #1a1a2e; border: 1px solid #2a2a4a;
-            border-radius: 12px; padding: 28px; transition: border-color 0.2s;
-        }
-        .funnel-card:hover { border-color: #9D4EDD; }
-        .funnel-card h3 { font-size: 18px; color: #fff; margin-bottom: 10px; }
-        .funnel-card p { font-size: 14px; color: #808090; margin-bottom: 16px; line-height: 1.5; }
-        .funnel-card .tag {
-            display: inline-block; padding: 4px 10px; border-radius: 4px;
-            font-size: 11px; font-weight: 600; margin-bottom: 12px;
-        }
-        .tag-tofu { background: #1a3a2e; color: #00FF88; }
-        .tag-mofu { background: #2a1a4e; color: #b86aff; }
-        .tag-bofu { background: #3a1a1e; color: #ff6b6b; }
-        .funnel-card a {
-            color: #9D4EDD; text-decoration: none; font-weight: 600; font-size: 14px;
-        }
-        .funnel-card a:hover { color: #b86aff; }
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vincentsativa.com/">
+<meta property="og:title" content="PhantomByte: AI That Actually Works">
+<meta property="og:description" content="Practical AI agent debugging guides, diagnostic tools, and consulting. Fix reasoning loops, context loss, and tool failures. Built by Vincent Sativa.">
+<meta property="og:image" content="https://phantom-byte.com/images/phantombyte-og.jpg">
+<meta property="og:site_name" content="PhantomByte">
+<meta property="og:locale" content="en_US">
 
-        .footer {
-            text-align: center; padding: 40px; color: #606070; font-size: 13px;
-            border-top: 1px solid #1a1a2e; max-width: 1200px; margin: 0 auto;
-        }
-        /* MOBILE OPTIMIZATION */
-        html { -webkit-text-size-adjust: 100%; }
-        @media (max-width: 768px) {
-            body { font-size: 16px; }
-            nav { flex-direction: column; gap: 12px; padding: 18px 20px 14px; }
-            .nav-links { gap: 20px; }
-            .nav-links a { font-size: 13px; }
-            .hero { padding: 50px 20px 40px; }
-            .hero h1 { font-size: 30px; }
-            .hero p { font-size: 16px; }
-            .section { padding: 40px 20px; }
-            .section h2 { font-size: 24px; }
-            .funnel-grid { grid-template-columns: 1fr; }
-            .btn-secondary { margin-left: 0; margin-top: 12px; display: inline-block; }
-            .btn-primary, .btn-secondary { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; }
-        }
-        @media (max-width: 480px) {
-            nav { gap: 10px; padding: 14px 16px 10px; }
-            .nav-links { gap: 16px; }
-            .hero h1 { font-size: 24px; }
-            .hero .sub { font-size: 12px; }
-        }
-        /* iOS safe areas */
-        @supports (padding: max(0px)) {
-            body { padding-top: env(safe-area-inset-top, 0px); }
-            nav { padding-left: max(40px, env(safe-area-inset-left, 40px)); padding-right: max(40px, env(safe-area-inset-right, 40px)); }
-        }
-        @supports (padding: max(0px)) and (max-width: 768px) {
-            nav { padding-left: max(20px, env(safe-area-inset-left, 20px)); padding-right: max(20px, env(safe-area-inset-right, 20px)); }
-        }
-    </style>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PDQCZE09E4"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PDQCZE09E4');</script>
-    <!-- Force scroll to top on load -- beats browser scroll restoration (Chrome, etc) -->
-    <script>
-    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    // Immediate + after load + on pageshow (bfcache) = beats all browsers
-    function forceTop() { window.scrollTo(0, 0); }
-    forceTop();
-    window.addEventListener('load', function() { requestAnimationFrame(forceTop); });
-    window.addEventListener('pageshow', function() { requestAnimationFrame(forceTop); });
-    </script>
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vincentsativa.com/">
+<meta property="twitter:title" content="PhantomByte: AI That Actually Works">
+<meta property="twitter:description" content="Practical AI agent debugging guides, diagnostic tools, and consulting. Built by Vincent Sativa.">
+<meta property="twitter:site" content="@PhantomByteAI">
+
+<!-- Favicon: PhantomByte ghost -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%239D4EDD'/%3E%3Cstop offset='100%25' stop-color='%237B2CBF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M50 5C25 5 10 25 10 50v35l8-8 8 8 8-8 8 8 8-8 8 8V50C66 25 60 5 50 5z'/%3E%3Ccircle fill='%230a0a0a' cx='38' cy='42' r='6'/%3E%3Ccircle fill='%230a0a0a' cx='62' cy='42' r='6'/%3E%3Cellipse fill='%230a0a0a' cx='50' cy='58' rx='8' ry='6'/%3E%3C/svg%3E">
+
+<!-- Robots -->
+<meta name="googlebot" content="index, follow">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PDQCZE09E4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PDQCZE09E4');
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --purple:#9D4EDD; --purple-dark:#7B2CBF; --purple-darker:#6A1B9A;
+  --green:#00FF88; --green-dark:#00CC6A;
+  --black:#050507; --darker:#020203;
+  --panel:#0d0d12; --panel-2:#101018;
+  --line:#1c1c26; --line-bright:#2a2a38;
+  --text:#e6e6f0; --dim:#8a8a9a; --dimmer:#5a5a6a;
+  --orange:#FF6B35;
+  --mono:ui-monospace,'SF Mono','Cascadia Code',Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--black);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+/* scanline + grid backdrop */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(rgba(157,78,221,0.04) 1px,transparent 1px) 0 0/40px 40px,
+    linear-gradient(90deg,rgba(0,255,136,0.03) 1px,transparent 1px) 0 0/40px 40px,
+    radial-gradient(ellipse 80% 50% at 50% 0%,rgba(157,78,221,0.10),transparent 70%)}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,0.012) 0 1px,transparent 1px 3px)}
+.wrap{position:relative;z-index:2}
+a{color:var(--green);text-decoration:none}
+.mono{font-family:var(--mono)}
+
+/* ---- header ---- */
+header{position:sticky;top:0;z-index:100;background:rgba(5,5,7,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{max-width:1240px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-weight:900;font-size:1.15rem;letter-spacing:2px;display:flex;align-items:center;gap:10px}
+.logo .ghost{width:24px;height:24px;flex:none;filter:drop-shadow(0 0 8px rgba(157,78,221,.6))}
+.logo .phantom{color:#fff}.logo .byte{color:var(--purple)}
+.logo .sub{display:block;font-family:var(--mono);font-size:.5rem;color:var(--green);letter-spacing:3px;font-weight:600;margin-top:1px}
+.nav{display:flex;gap:22px;align-items:center}
+.nav a{color:var(--dim);font-size:.78rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;transition:color .2s}
+.nav a:hover{color:var(--green)}
+.btn-nav{font-family:var(--mono);font-size:.74rem;color:#050507!important;background:var(--green);padding:9px 14px;border-radius:4px;font-weight:700;letter-spacing:.5px;box-shadow:0 0 18px rgba(0,255,136,.35);white-space:nowrap}
+.btn-nav:hover{background:#fff}
+.nav a:not(.btn-nav){display:none}
+@media(min-width:820px){
+  .bar{padding:14px 28px}
+  .logo{font-size:1.25rem}.logo .ghost{width:26px}.logo .sub{font-size:.55rem}
+  .nav{gap:26px}
+  .nav a{font-size:.8rem}
+  .btn-nav{font-size:.78rem;padding:9px 16px}
+  .nav a:not(.btn-nav){display:inline}
+}
+
+/* ---- status ticker ---- */
+.ticker{background:var(--darker);border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.66rem;color:var(--dimmer);letter-spacing:.5px;overflow:hidden}
+.ticker .inner{max-width:1240px;margin:0 auto;padding:6px 18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.ticker .live{color:var(--green);display:flex;align-items:center;gap:6px;font-weight:700}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@media(min-width:820px){.ticker{font-size:.72rem}.ticker .inner{padding:7px 28px;gap:26px}}
+
+/* ---- hero ---- */
+.hero{max-width:1240px;margin:0 auto;padding:20px 18px 30px;text-align:center}
+@media(min-width:820px){.hero{padding:24px 28px 30px}}
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.66rem;color:var(--green);border:1px solid rgba(0,255,136,.4);background:rgba(0,255,136,.06);padding:6px 12px;border-radius:40px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:22px}
+.tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+@media(min-width:820px){.tag{font-size:.72rem;padding:7px 14px;margin-bottom:26px}}
+h1{font-size:clamp(2rem,7vw,4.4rem);font-weight:900;line-height:1.02;letter-spacing:-1.5px;margin-bottom:20px}
+h1 .grad{background:linear-gradient(90deg,var(--green),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+h1 .glow{text-shadow:0 0 40px rgba(157,78,221,.5)}
+.lead{font-size:clamp(.98rem,2.2vw,1.25rem);color:var(--dim);max-width:660px;margin:0 auto 32px}
+.hero .by{font-family:var(--mono);font-size:.74rem;color:var(--dimmer);margin:-20px 0 28px;letter-spacing:1px}
+.terminal{max-width:680px;margin:0 auto 26px;text-align:left;font-family:var(--mono);font-size:.76rem;background:var(--panel);border:1px solid var(--line-bright);border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(157,78,221,.12)}
+.terminal .tt{background:linear-gradient(90deg,#15151f,#0d0d12);padding:9px 12px;border-bottom:1px solid var(--line);display:flex;gap:7px;align-items:center;font-size:.64rem;color:var(--dimmer)}
+.terminal .tt b{color:var(--dim);margin-left:8px}
+.terminal .tt .tdot{width:10px;height:10px;border-radius:50%}
+.tdot.r{background:#ff5f56}.tdot.y{background:#ffbd2e}.tdot.g{background:#27c93f}
+.terminal .body{padding:14px 15px;color:var(--text)}
+.terminal .body .ln{white-space:pre-wrap;word-break:break-word}
+.terminal .prompt{color:var(--purple)}.terminal .cmd{color:#fff}.terminal .out{color:var(--dim)}.terminal .ok{color:var(--green)}.terminal .warn{color:var(--orange)}
+.cursor{display:inline-block;width:8px;height:1.05em;background:var(--green);vertical-align:text-bottom;animation:blink 1s steps(2) infinite;margin-left:2px}
+@keyframes blink{50%{opacity:0}}
+@media(min-width:820px){.terminal{font-size:.85rem}.terminal .tt{padding:10px 14px;font-size:.7rem}.terminal .tt b{margin-left:10px}.terminal .body{padding:18px 20px}}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.cta-primary{font-family:var(--mono);font-size:.86rem;font-weight:700;color:#050507;background:linear-gradient(135deg,var(--green),var(--green-dark));padding:15px 26px;border-radius:8px;letter-spacing:.5px;box-shadow:0 0 30px rgba(0,255,136,.4);transition:transform .15s,box-shadow .15s;width:100%;display:inline-block;text-align:center}
+.cta-primary:hover{transform:translateY(-2px);box-shadow:0 0 45px rgba(0,255,136,.6);color:#050507}
+.cta-ghost{font-family:var(--mono);font-size:.84rem;font-weight:600;color:var(--text);border:1px solid var(--line-bright);padding:15px 22px;border-radius:8px;transition:border-color .2s,color .2s;width:100%;text-align:center}
+.cta-ghost:hover{border-color:var(--purple);color:var(--purple)}
+@media(min-width:560px){.hero-cta{flex-wrap:nowrap}.cta-primary,.cta-ghost{width:auto}}
+@media(min-width:820px){.cta-primary{font-size:.95rem;padding:16px 30px}.cta-ghost{font-size:.9rem;padding:16px 26px}}
+
+/* ---- stats bar ---- */
+.stats{max-width:1240px;margin:32px auto 0;padding:0 18px}
+@media(min-width:820px){.stats{margin-top:40px;padding:0 28px}}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stat{background:var(--panel);padding:22px 16px;text-align:center}
+.stat .n{font-family:var(--mono);font-size:clamp(1.4rem,5vw,2.2rem);font-weight:800;color:var(--green);text-shadow:0 0 20px rgba(0,255,136,.3)}
+.stat .n.p{color:var(--purple);text-shadow:0 0 20px rgba(157,78,221,.4)}
+.stat .l{font-size:.62rem;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px;margin-top:6px}
+@media(min-width:680px){.stats-grid{grid-template-columns:repeat(4,1fr)}.stat{padding:26px 20px}.stat .l{font-size:.72rem}}
+
+/* ---- section frame ---- */
+section{max-width:1240px;margin:0 auto;padding:56px 18px}
+@media(min-width:820px){section{padding:90px 28px}}
+.sec-head{text-align:center;max-width:720px;margin:0 auto 44px}
+@media(min-width:820px){.sec-head{margin-bottom:60px}}
+.sec-kicker{font-family:var(--mono);font-size:.7rem;color:var(--purple);letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+@media(min-width:820px){.sec-kicker{font-size:.75rem}}
+.sec-title{font-size:clamp(1.6rem,5vw,2.8rem);font-weight:900;letter-spacing:-1px;line-height:1.1}
+.sec-title .u{color:var(--green)}
+.sec-sub{color:var(--dim);font-size:.98rem;margin-top:16px}
+@media(min-width:820px){.sec-sub{font-size:1.05rem;margin-top:18px}}
+
+/* ---- the problem: agent failures ---- */
+.problem{background:linear-gradient(180deg,transparent,rgba(255,107,53,.04),transparent)}
+.alerts{display:grid;grid-template-columns:1fr;gap:14px;margin-top:10px}
+@media(min-width:680px){.alerts{grid-template-columns:repeat(2,1fr);gap:16px}}
+.alert{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--orange);border-radius:8px;padding:18px;display:flex;gap:14px;align-items:flex-start}
+@media(min-width:820px){.alert{padding:20px 22px;gap:16px}}
+.alert .ico{font-size:1.3rem;line-height:1}
+.alert h4{font-size:.98rem;margin-bottom:6px;color:#fff}
+.alert p{font-size:.85rem;color:var(--dim);line-height:1.5}
+.alert .tag-l{font-family:var(--mono);font-size:.58rem;color:var(--orange);letter-spacing:1px;text-transform:uppercase;font-weight:700;display:block;margin-bottom:8px}
+@media(min-width:820px){.alert .ico{font-size:1.4rem}.alert h4{font-size:1rem}.alert p{font-size:.88rem}.alert .tag-l{font-size:.62rem}}
+.problem-foot{text-align:center;margin-top:30px;font-family:var(--mono);font-size:.86rem;color:var(--text)}
+.problem-foot b{color:var(--green)}
+@media(min-width:820px){.problem-foot{margin-top:34px;font-size:.92rem}}
+
+/* ---- resources: panels ---- */
+.panels{display:grid;grid-template-columns:1fr;gap:14px;margin-top:10px}
+@media(min-width:680px){.panels{grid-template-columns:repeat(2,1fr);gap:18px}}
+@media(min-width:1040px){.panels{grid-template-columns:repeat(4,1fr)}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;position:relative;transition:border-color .25s,transform .25s,box-shadow .25s;overflow:hidden}
+@media(min-width:820px){.panel{padding:26px}}
+.panel::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--purple),transparent);opacity:0;transition:opacity .25s}
+.panel:hover{border-color:var(--purple);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 40px rgba(157,78,221,.12)}
+.panel:hover::before{opacity:1}
+.panel-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.panel-ico{font-size:1.5rem}
+.status{font-family:var(--mono);font-size:.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:6px}
+.status .sd{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 7px var(--green)}
+.status.free{color:var(--orange)}
+.status.free .sd{background:var(--orange);box-shadow:0 0 7px var(--orange)}
+@media(min-width:820px){.panel-ico{font-size:1.6rem}.status{font-size:.62rem}}
+.panel h3{font-size:1.12rem;margin-bottom:8px;color:#fff;line-height:1.25}
+@media(min-width:820px){.panel h3{font-size:1.2rem}}
+.panel p{font-size:.85rem;color:var(--dim);margin-bottom:16px;min-height:42px}
+@media(min-width:820px){.panel p{font-size:.88rem;margin-bottom:18px}}
+.panel ul{list-style:none;margin-bottom:18px}
+.panel ul li{font-size:.8rem;color:var(--text);padding:5px 0 5px 20px;position:relative}
+.panel ul li::before{content:'>';position:absolute;left:0;color:var(--green);font-family:var(--mono);font-weight:700}
+@media(min-width:820px){.panel ul li{font-size:.82rem}}
+.panel-foot{display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid var(--line);gap:10px}
+.price{font-family:var(--mono);font-weight:800;font-size:1.1rem;color:var(--green);white-space:nowrap}
+.price .per{font-size:.66rem;color:var(--dim);font-weight:500}
+.panel-cta{font-family:var(--mono);font-size:.7rem;font-weight:700;color:var(--purple);letter-spacing:.5px;text-transform:uppercase;transition:color .2s;white-space:nowrap}
+.panel-cta:hover{color:var(--green)}
+@media(min-width:820px){.panel-cta{font-size:.72rem}}
+.panel.featured{border-color:var(--purple);box-shadow:0 0 30px rgba(157,78,221,.15)}
+.ribbon{position:absolute;top:14px;right:-30px;background:var(--purple);color:#fff;font-family:var(--mono);font-size:.56rem;font-weight:700;letter-spacing:1px;padding:4px 34px;transform:rotate(35deg)}
+@media(min-width:820px){.ribbon{font-size:.6rem}}
+#resources{padding-top:40px;padding-bottom:14px}
+
+/* ---- articles highlight banner ---- */
+.articles-banner{background:linear-gradient(135deg,rgba(157,78,221,.12),rgba(0,255,136,.06));border:1px solid var(--purple);border-radius:16px;padding:34px 22px;max-width:1100px;margin:0 auto;position:relative;overflow:hidden;box-shadow:0 0 60px rgba(157,78,221,.15)}
+@media(min-width:820px){.articles-banner{padding:48px 40px}}
+.articles-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 100% 0%,rgba(0,255,136,.12),transparent 70%);pointer-events:none}
+.ab-inner{position:relative;display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+@media(min-width:820px){.ab-inner{grid-template-columns:1.5fr 1fr;gap:40px}}
+.ab-kicker{font-family:var(--mono);font-size:.7rem;color:var(--green);letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+@media(min-width:820px){.ab-kicker{font-size:.75rem}}
+.ab-title{font-size:clamp(1.5rem,4.5vw,2.4rem);font-weight:900;letter-spacing:-.5px;line-height:1.1;margin-bottom:14px}
+.ab-title .u{color:var(--green)}
+.ab-text{color:var(--dim);font-size:.96rem;margin-bottom:20px;max-width:560px}
+@media(min-width:820px){.ab-text{font-size:1.02rem}}
+.ab-list{list-style:none;margin-bottom:24px}
+.ab-list li{font-size:.86rem;color:var(--text);padding:7px 0 7px 22px;position:relative}
+.ab-list li::before{content:'>';position:absolute;left:0;color:var(--green);font-family:var(--mono);font-weight:700}
+.ab-actions{display:flex;flex-direction:column;gap:12px}
+.ab-cta{font-family:var(--mono);font-size:.9rem;font-weight:700;color:#050507;background:linear-gradient(135deg,var(--green),var(--green-dark));padding:16px 24px;border-radius:10px;letter-spacing:.5px;box-shadow:0 0 28px rgba(0,255,136,.4);text-align:center;transition:transform .15s,box-shadow .15s}
+.ab-cta:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(0,255,136,.6);color:#050507}
+.ab-ghost{font-family:var(--mono);font-size:.84rem;font-weight:600;color:var(--text);border:1px solid var(--line-bright);padding:15px 22px;border-radius:10px;text-align:center;transition:border-color .2s,color .2s}
+.ab-ghost:hover{border-color:var(--purple);color:var(--purple)}
+.ab-stat{font-family:var(--mono);font-size:.72rem;color:var(--dimmer);text-align:center;margin-top:6px;letter-spacing:.5px}
+.ab-stat b{color:var(--green)}
+.ab-card{background:var(--panel);border:1px solid var(--line-bright);border-radius:12px;padding:26px;text-align:center}
+.ab-card .big{font-family:var(--mono);font-size:clamp(2.2rem,6vw,3rem);font-weight:800;color:var(--purple);text-shadow:0 0 25px rgba(157,78,221,.4);line-height:1}
+.ab-card .lab{font-size:.78rem;color:var(--dim);margin-top:10px;letter-spacing:.5px}
+.ab-card .desc{font-size:.74rem;color:var(--dimmer);margin-top:8px;line-height:1.5}
+
+/* ---- how it works ---- */
+.flow{display:grid;grid-template-columns:1fr;gap:14px;margin-top:10px;position:relative}
+@media(min-width:680px){.flow{grid-template-columns:repeat(2,1fr);gap:20px}}
+@media(min-width:980px){.flow{grid-template-columns:repeat(4,1fr);gap:20px}}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px 18px;text-align:center;position:relative}
+@media(min-width:820px){.step{padding:28px 22px}}
+.step .num{font-family:var(--mono);font-size:2.2rem;font-weight:800;color:transparent;-webkit-text-stroke:1.5px var(--purple);line-height:1;margin-bottom:12px}
+.step h4{font-size:1rem;color:#fff;margin-bottom:8px}
+.step p{font-size:.82rem;color:var(--dim)}
+@media(min-width:820px){.step .num{font-size:2.4rem;margin-bottom:14px}.step h4{font-size:1.05rem}.step p{font-size:.84rem}}
+.step:not(:last-child)::after{content:'\2192';display:none}
+@media(min-width:980px){.step:not(:last-child)::after{display:block;position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--purple);font-size:1.1rem;font-weight:700;z-index:5}}
+
+/* ---- authority / proof ---- */
+#proof{padding-top:24px}
+@media(min-width:820px){#proof{padding-top:24px}}
+.proof-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:10px}
+@media(min-width:880px){.proof-grid{grid-template-columns:1.3fr 1fr;gap:24px}}
+.proof-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px}
+@media(min-width:820px){.proof-card{padding:32px}}
+.proof-card h3{font-size:1.2rem;color:#fff;margin-bottom:10px}
+@media(min-width:820px){.proof-card h3{font-size:1.4rem}}
+.proof-card p{color:var(--dim);font-size:.9rem;margin-bottom:20px}
+@media(min-width:820px){.proof-card p{font-size:.95rem;margin-bottom:22px}}
+.proof-list{list-style:none}
+.proof-list li{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.84rem;color:var(--text)}
+.proof-list li:last-child{border-bottom:none}
+.proof-list .chk{color:var(--green);font-family:var(--mono);font-weight:700;flex:none}
+@media(min-width:820px){.proof-list li{font-size:.88rem}}
+.metric-stack{display:grid;gap:14px}
+.metric{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px}
+@media(min-width:820px){.metric{padding:24px}}
+.metric .big{font-family:var(--mono);font-size:2.2rem;font-weight:800;color:var(--green);line-height:1}
+.metric .big.p{color:var(--purple)}
+.metric .lab{font-size:.78rem;color:var(--dim);margin-top:8px}
+@media(min-width:820px){.metric .big{font-size:2.4rem}.metric .lab{font-size:.8rem}}
+
+/* ---- final CTA ---- */
+.final{background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(157,78,221,.18),transparent 70%),var(--darker);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
+.final-box{background:var(--panel);border:1px solid var(--purple);border-radius:16px;padding:36px 22px;max-width:640px;margin:0 auto;box-shadow:0 0 60px rgba(157,78,221,.15)}
+@media(min-width:820px){.final-box{padding:50px 40px}}
+.final-box h2{font-size:clamp(1.5rem,5vw,2.4rem);font-weight:900;margin-bottom:12px;letter-spacing:-.5px}
+.final-box>p{color:var(--dim);margin-bottom:24px;font-size:.92rem}
+@media(min-width:820px){.final-box>p{font-size:1rem;margin-bottom:28px}}
+.final-cta-row{display:flex;flex-direction:column;gap:12px;align-items:center}
+@media(min-width:560px){.final-cta-row{flex-direction:row;justify-content:center}}
+.final-cta-row .cta-primary{width:auto}
+.final-cta-row .lead-secondary{font-family:var(--mono);font-size:.84rem;color:var(--text);border:1px solid var(--line-bright);padding:15px 22px;border-radius:8px;transition:border-color .2s,color .2s}
+.final-cta-row .lead-secondary:hover{border-color:var(--purple);color:var(--purple)}
+.guarantee{font-family:var(--mono);font-size:.68rem;color:var(--dimmer);margin-top:18px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.guarantee span{display:flex;align-items:center;gap:6px}
+.guarantee .chk{color:var(--green)}
+@media(min-width:820px){.guarantee{font-size:.74rem;gap:18px}}
+
+/* ---- footer ---- */
+footer{background:var(--darker);border-top:2px solid var(--purple);padding:48px 18px 30px;margin-top:64px}
+@media(min-width:820px){footer{padding:54px 28px 30px;margin-top:80px}}
+.foot{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:30px}
+@media(min-width:760px){.foot{grid-template-columns:1.4fr 1fr 1fr;gap:40px}}
+.foot .logo{margin-bottom:12px}
+.tagline{color:var(--green);font-style:italic;margin-bottom:14px}
+.foot-blurb{color:var(--dim);font-size:.85rem;max-width:280px}
+.foot h4{color:#fff;text-transform:uppercase;letter-spacing:1px;font-size:.78rem;margin-bottom:14px}
+.foot ul{list-style:none}.foot li{margin-bottom:9px}
+.foot a{color:var(--dim);font-size:.86rem;transition:color .2s,padding-left .2s}
+.foot a:hover{color:var(--green);padding-left:5px}
+.foot-bottom{max-width:1240px;margin:30px auto 0;padding-top:26px;border-top:1px solid var(--line);text-align:center;color:var(--dimmer);font-size:.76rem}
+.foot-bottom a{color:var(--dimmer);margin:0 8px}
+.foot-bottom a:hover{color:var(--green)}
+@media(min-width:820px){.foot-bottom{font-size:.78rem}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://vincentsativa.com/#organization",
+      "name": "PhantomByte",
+      "url": "https://vincentsativa.com",
+      "founder": { "@type": "Person", "name": "Vincent Sativa" },
+      "email": "hello@phantom-byte.com",
+      "sameAs": [
+        "https://articles.phantom-byte.com/",
+        "https://x.com/PhantomByteAI",
+        "https://phantom-byte.com"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://vincentsativa.com/#website",
+      "url": "https://vincentsativa.com",
+      "name": "PhantomByte: AI That Actually Works",
+      "description": "Practical AI agent debugging guides, diagnostic tools, and consulting.",
+      "publisher": { "@id": "https://vincentsativa.com/#organization" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://vincentsativa.com/#webpage",
+      "url": "https://vincentsativa.com/",
+      "name": "PhantomByte: AI That Actually Works",
+      "description": "Practical AI agent debugging guides, diagnostic tools, and consulting from PhantomByte. Built by Vincent Sativa.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://vincentsativa.com/#website" }
+    }
+  ]
+}
+</script>
 </head>
-<body data-page="index">
-    <nav>
-        <a href="/" class="logo">Phantom<span>Byte</span></a>
-        <div class="nav-links">
-            <a href="https://articles.phantom-byte.com">Articles</a>
-            <a href="funnels/contact.html">Contact</a>
-        </div>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<header>
+  <div class="bar">
+    <a href="/" class="logo">
+      <svg class="ghost" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#9D4EDD"></stop><stop offset="100%" stop-color="#7B2CBF"></stop></linearGradient></defs><path fill="url(#lg)" d="M50 5C25 5 10 25 10 50v35l8-8 8 8 8-8 8 8 8-8 8 8V50C66 25 60 5 50 5z"></path><circle fill="#050507" cx="38" cy="42" r="6"></circle><circle fill="#050507" cx="62" cy="42" r="6"></circle><ellipse fill="#050507" cx="50" cy="58" rx="8" ry="6"></ellipse></svg>
+      <div><span class="phantom">Phantom</span><span class="byte">Byte</span><span class="sub">Code from the shadows</span></div>
+    </a>
+    <nav class="nav">
+      <a href="#failures">Why</a>
+      <a href="#resources">Resources</a>
+      <a href="#articles">Articles</a>
+      <a href="#proof">Authority</a>
+      <a href="https://phantom-byte.com" target="_blank" rel="noopener">Services</a>
+      <a class="btn-nav" href="https://articles.phantom-byte.com" target="_blank" rel="noopener">Read Articles</a>
     </nav>
+  </div>
+</header>
 
-    <div class="hero">
-        <h1>AI That Actually Works</h1>
-        <p>Practical debugging guides, diagnostic tools, and consulting for developers building production AI agents — no fluff, just code from the shadows.</p>
-        <p class="sub">A project by Vincent Sativa</p>
-        <div style="margin-top:24px;">
-            <a href="https://articles.phantom-byte.com" class="btn-primary">Explore Articles →</a>
-            <a href="#funnels" class="btn-secondary">Free Tools ↓</a>
+<!-- TICKER -->
+<div class="ticker"><div class="inner">
+  <span class="live"><span class="dot"></span>SYSTEM ONLINE</span>
+  <span>RESOURCES LIVE: 4</span>
+  <span>FAILURE MODES FIXED: 7</span>
+  <span>FORMAT: PDF + FLOWCHART</span>
+  <span>FREE + NO CARD</span>
+</div></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="tag">AI Agent Debugging Hub</div>
+  <h1><span class="glow">Stop shipping broken agents.</span><br><span class="grad">Start debugging like an operator.</span></h1>
+  <p class="lead">PhantomByte gives you practical debugging guides, diagnostic tools, and consulting for developers building production AI agents. No fluff. Just code from the shadows.</p>
+  <p class="by">// a project by Vincent Sativa</p>
+
+  <div class="terminal">
+    <div class="tt"><span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span><b>phantombyte@debug · zsh</b></div>
+    <div class="body">
+<span class="ln"><span class="prompt">$</span> <span class="cmd">phantombyte debug --agent="prod-agent"</span></span>
+<span class="ln"><span class="out">&gt; scanning failure modes...</span></span>
+<span class="ln"><span class="ok">&#10003;</span> <span class="out">reasoning loops ........... fixed</span></span>
+<span class="ln"><span class="ok">&#10003;</span> <span class="out">context degradation ....... fixed</span></span>
+<span class="ln"><span class="ok">&#10003;</span> <span class="out">tool call failures ......... fixed</span></span>
+<span class="ln"><span class="warn">!</span> <span class="out">silent money burn .......... stopped</span></span>
+<span class="ln"><span class="prompt">$</span> <span class="ok">done. your agent actually works.</span><span class="cursor"></span></span>
+    </div>
+  </div>
+
+  <div class="hero-cta">
+    <a class="cta-primary" href="https://articles.phantom-byte.com" target="_blank" rel="noopener">&#9656; Read the Articles</a>
+    <a class="cta-ghost" href="#resources">Grab the free tools</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="n">4</div><div class="l">free resources</div></div>
+    <div class="stat"><div class="n p">7</div><div class="l">failure modes fixed</div></div>
+    <div class="stat"><div class="n">5</div><div class="l">day debug challenge</div></div>
+    <div class="stat"><div class="n p">100+</div><div class="l">articles archived</div></div>
+  </div>
+</div>
+
+<!-- THE PROBLEM: AGENT FAILURES -->
+<section id="failures" class="problem">
+  <div class="sec-head">
+    <div class="sec-kicker">// failure mode analysis</div>
+    <h2 class="sec-title">Production agents break in <span class="u">predictable</span> ways.</h2>
+    <p class="sec-sub">Most agent failures are not mysterious. They are a handful of recurring modes that quietly drain your budget, your time, and your users' trust. Here is the gap PhantomByte closes for you.</p>
+  </div>
+  <div class="alerts">
+    <div class="alert"><div class="ico">&#129504;</div><div><span class="tag-l">reasoning loops</span><h4>Stuck in a loop, burning tokens</h4><p>Your agent spins in circles, calling the same tool over and over while your API bill climbs. It never finishes the job and you never find out why.</p></div></div>
+    <div class="alert"><div class="ico">&#128202;</div><div><span class="tag-l">context degradation</span><h4>Memory that quietly forgets</h4><p>By turn 20 your agent has lost the plot. It forgets earlier instructions, drifts off task, and gives answers that look right but are wrong.</p></div></div>
+    <div class="alert"><div class="ico">&#128269;</div><div><span class="tag-l">tool call failures</span><h4>Tools that fail silently</h4><p>A tool throws or returns garbage and your agent runs with it. No error, no retry, no alert. Just bad output shipped to your users.</p></div></div>
+    <div class="alert"><div class="ico">&#128176;</div><div><span class="tag-l">silent money burn</span><h4>You pay for failures, not results</h4><p>Every broken run still costs you. The bill grows, the value does not, and nobody can tell you where the money is actually going.</p></div></div>
+  </div>
+  <p class="problem-foot">Every day this continues, you ship broken agents and burn budget. <b>PhantomByte teaches you to fix it yourself.</b></p>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources">
+  <div class="sec-head">
+    <div class="sec-kicker">// free resource library</div>
+    <h2 class="sec-title">Four free resources. <span class="u">One goal:</span> agents that work.</h2>
+    <p class="sec-sub">Each resource is a hands-on tool you download or sign up for, follow step by step, and use to fix your own agents. No subscriptions, no card, no fluff.</p>
+  </div>
+  <div class="panels">
+
+    <div class="panel featured">
+      <div class="ribbon">START HERE</div>
+      <div class="panel-top"><div class="panel-ico">&#128214;</div><div class="status"><span class="sd"></span>PDF</div></div>
+      <h3>AI Agent Debugging Playbook</h3>
+      <p>Fix 7 critical failure modes, from reasoning loops to context degradation to tool failures. Includes the diagnostic flowchart.</p>
+      <ul><li>7 failure modes, explained and fixed</li><li>Copy-paste diagnostic flowchart</li><li>Run it on your own agent</li></ul>
+      <div class="panel-foot"><div class="price">Free <span class="per">download</span></div><a class="panel-cta" href="funnels/01-playbook-lead-magnet.html">get it &#8594;</a></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-top"><div class="panel-ico">&#128202;</div><div class="status"><span class="sd"></span>1-PAGE</div></div>
+      <h3>AI Agent Diagnostic Flowchart</h3>
+      <p>One visual page that walks you from symptom to fix. Identify and resolve agent failures in minutes instead of hours.</p>
+      <ul><li>Step-by-step decision tree</li><li>Symptom-to-fix in one glance</li><li>Print it, pin it, use it</li></ul>
+      <div class="panel-foot"><div class="price">Free <span class="per">download</span></div><a class="panel-cta" href="funnels/02-diagnostic-flowchart-squeeze.html">get it &#8594;</a></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-top"><div class="panel-ico">&#128231;</div><div class="status"><span class="sd"></span>5-DAY</div></div>
+      <h3>5-Day AI Debugging Challenge</h3>
+      <p>A free email course that builds real debugging muscle. One failure mode per day, and day 5 unlocks the full playbook.</p>
+      <ul><li>One task per day, five days</li><li>Reasoning, context, tools, and more</li><li>Day 5 unlocks the playbook</li></ul>
+      <div class="panel-foot"><div class="price">Free <span class="per">email course</span></div><a class="panel-cta" href="funnels/03-5-day-challenge-email.html">start now &#8594;</a></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-top"><div class="panel-ico">&#128269;</div><div class="status free"><span class="sd"></span>AUDIT</div></div>
+      <h3>AI Agent Audit Service</h3>
+      <p>Get a professional audit of your agent systems. We diagnose failures, optimize performance, and stop the money burn.</p>
+      <ul><li>Full review of your agent stack</li><li>Failure points, ranked and fixed</li><li>Done for you by PhantomByte</li></ul>
+      <div class="panel-foot"><div class="price">Free <span class="per">application</span></div><a class="panel-cta" href="funnels/04-free-agent-audit-application.html">apply &#8594;</a></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ARTICLES HIGHLIGHT BANNER -->
+<section id="articles" style="padding-top:20px">
+  <div class="sec-head">
+    <div class="sec-kicker">// the publication</div>
+    <h2 class="sec-title">Deep-dive AI articles at <span class="u">articles.phantom-byte.com</span></h2>
+    <p class="sec-sub">The free resource behind everything here. PhantomByte publishes 100+ deep-dive articles on AI infrastructure, autonomous agents, orchestration, and the unglamorous production details nobody else writes down.</p>
+  </div>
+  <div class="articles-banner">
+    <div class="ab-inner">
+      <div>
+        <div class="ab-kicker">// free to read, forever</div>
+        <h3 class="ab-title">Read the field notes from <span class="u">operators who shipped it first.</span></h3>
+        <p class="ab-text">Articles.phantom-byte.com is the full library behind the playbooks. Every guide is drawn from a real deployment, not a demo. New deep dives land regularly, so the knowledge keeps compounding.</p>
+        <ul class="ab-list">
+          <li>100+ archived articles on real AI infrastructure</li>
+          <li>Agents, orchestration, local stacks, and tooling</li>
+          <li>Production lessons you cannot get from the docs</li>
+          <li>Always free, no paywall, no email required to browse</li>
+        </ul>
+        <div class="ab-actions">
+          <a class="ab-cta" href="https://articles.phantom-byte.com" target="_blank" rel="noopener">&#9656; Explore articles.phantom-byte.com</a>
+          <a class="ab-ghost" href="#resources">Or grab the free debugging tools &#8595;</a>
         </div>
+      </div>
+      <div class="ab-card">
+        <div class="big">100+</div>
+        <div class="lab">articles archived</div>
+        <div class="desc">Deep-dive AI infrastructure guides, written from production deployments and updated as new systems ship.</div>
+      </div>
     </div>
+    <p class="ab-stat"><b>articles.phantom-byte.com</b> is PhantomByte's public archive. Start there, then grab the tools above.</p>
+  </div>
+</section>
 
-    <div class="section" id="funnels">
-        <h2>Free AI Agent Resources</h2>
-        <div class="funnel-grid">
-            <div class="funnel-card">
-                <span class="tag tag-tofu">TOFU • Free Download</span>
-                <h3>AI Agent Debugging Playbook</h3>
-                <p>Fix 7 critical failure modes: reasoning loops, context degradation, tool failures & more. Includes diagnostic flowchart.</p>
-                <a href="funnels/01-playbook-lead-magnet.html">Get the Playbook →</a>
-            </div>
-            <div class="funnel-card">
-                <span class="tag tag-tofu">TOFU • Free Download</span>
-                <h3>AI Agent Diagnostic Flowchart</h3>
-                <p>Visual step-by-step troubleshooting guide. Identify and fix agent failures in minutes with our one-page flowchart.</p>
-                <a href="funnels/02-diagnostic-flowchart-squeeze.html">Download Flowchart →</a>
-            </div>
-            <div class="funnel-card">
-                <span class="tag tag-mofu">MOFU • Free Course</span>
-                <h3>5-Day AI Debugging Challenge</h3>
-                <p>Free email course covering reasoning loops, context loss, tool failures, and more. Day 5 unlocks the full playbook.</p>
-                <a href="funnels/03-5-day-challenge-email.html">Start the Challenge →</a>
-            </div>
-            <div class="funnel-card">
-                <span class="tag tag-bofu">BOFU • Free Audit</span>
-                <h3>AI Agent Audit Service</h3>
-                <p>Get a professional audit of your agent systems. We diagnose failures, optimize performance, and stop the money burn.</p>
-                <a href="funnels/04-free-agent-audit-application.html">Apply for Audit →</a>
-            </div>
-        </div>
-    </div>
+<!-- HOW IT WORKS -->
+<section id="how" style="padding-top:20px">
+  <div class="sec-head">
+    <div class="sec-kicker">// debugging sequence</div>
+    <h2 class="sec-title">From <span class="u">broken to shipped</span> in four moves.</h2>
+    <p class="sec-sub">No bootcamps. No subscription paywalls. You grab a tool, you diagnose, you fix, you ship.</p>
+  </div>
+  <div class="flow">
+    <div class="step"><div class="num">01</div><h4>Grab a tool</h4><p>Download the playbook or flowchart, or start the 5-day challenge. Free, no card required.</p></div>
+    <div class="step"><div class="num">02</div><h4>Diagnose</h4><p>Run your agent against the failure modes. The flowchart points you from symptom to root cause in minutes.</p></div>
+    <div class="step"><div class="num">03</div><h4>Fix it</h4><p>Apply the fix for each mode. Reasoning loops, context loss, and tool failures each get a concrete remedy.</p></div>
+    <div class="step"><div class="num">04</div><h4>Ship</h4><p>Your agent works, your bill drops, and you understand why. Then level up with the articles archive.</p></div>
+  </div>
+</section>
 
-    <div class="footer">
-        PhantomByte — Code from the Shadows<br>
-        <span style="color:#404050;">vincentsativa.com © 2026</span>
+<!-- AUTHORITY -->
+<section id="proof">
+  <div class="sec-head">
+    <div class="sec-kicker">// operator credentials</div>
+    <h2 class="sec-title">We don't just <span class="u">debug</span> it. We shipped it first.</h2>
+    <p class="sec-sub">PhantomByte is the engineering team behind a live AI infrastructure publication read by developers and CTOs. The debugging playbook exists because we hit every one of these failures in production.</p>
+  </div>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <h3>Built by operators, not influencers.</h3>
+      <p>PhantomByte is run by Vincent Sativa and the team behind the PhantomByte AI infrastructure publication. We write the deep-dive guides that teach you to fix production agents, because we ran them first.</p>
+      <ul class="proof-list">
+        <li><span class="chk">&#10003;</span>100+ published articles on real AI infrastructure, agents, and orchestration</li>
+        <li><span class="chk">&#10003;</span>4 hands-on debugging resources distilled from production deployments</li>
+        <li><span class="chk">&#10003;</span>20+ production websites and APIs shipped on Cloud Run</li>
+        <li><span class="chk">&#10003;</span>No vendor lock-in. No "managed platform" dependency traps.</li>
+        <li><span class="chk">&#10003;</span>Every resource is free. You pay nothing to start fixing your agents.</li>
+      </ul>
     </div>
-<script src="js/main.js"></script>
+    <div class="metric-stack">
+      <div class="metric"><div class="big p">100+</div><div class="lab">deep-dive AI articles publicly archived</div></div>
+      <div class="metric"><div class="big">4</div><div class="lab">free debugging resources in the library</div></div>
+      <div class="metric"><div class="big p">7</div><div class="lab">failure modes covered end to end</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="final-box">
+    <h2>Fix your agents today.</h2>
+    <p>Start with the free Debugging Playbook, or jump straight into the articles archive that backs every guide we ship.</p>
+    <div class="final-cta-row">
+      <a class="cta-primary" href="funnels/01-playbook-lead-magnet.html">&#9656; Get the free playbook</a>
+      <a class="lead-secondary" href="https://articles.phantom-byte.com" target="_blank" rel="noopener">Read articles.phantom-byte.com &#8594;</a>
+    </div>
+    <div class="guarantee">
+      <span><span class="chk">&#10003;</span> 100% free to start</span>
+      <span><span class="chk">&#10003;</span> No card required</span>
+      <span><span class="chk">&#10003;</span> Instant access</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot">
+    <div>
+      <a href="/" class="logo">
+        <svg class="ghost" viewBox="0 0 100 100" aria-hidden="true" style="width:24px;height:24px"><path fill="#9D4EDD" d="M50 5C25 5 10 25 10 50v35l8-8 8 8 8-8 8 8 8-8 8 8V50C66 25 60 5 50 5z"></path><circle fill="#050507" cx="38" cy="42" r="6"></circle><circle fill="#050507" cx="62" cy="42" r="6"></circle><ellipse fill="#050507" cx="50" cy="58" rx="8" ry="6"></ellipse></svg>
+        <div><span class="phantom">Phantom</span><span class="byte">Byte</span></div>
+      </a>
+      <p class="tagline">Code from the shadows</p>
+      <p class="foot-blurb">Practical AI agent debugging guides, diagnostic tools, and consulting. No fluff. Just skills that ship. A project by Vincent Sativa.</p>
+    </div>
+    <div>
+      <h4>Fix Agents</h4>
+      <ul>
+        <li><a href="funnels/01-playbook-lead-magnet.html">Debugging Playbook</a></li>
+        <li><a href="funnels/02-diagnostic-flowchart-squeeze.html">Diagnostic Flowchart</a></li>
+        <li><a href="funnels/03-5-day-challenge-email.html">5-Day Challenge</a></li>
+        <li><a href="funnels/04-free-agent-audit-application.html">Agent Audit</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Read &amp; Contact</h4>
+      <ul>
+        <li><a href="https://articles.phantom-byte.com" target="_blank" rel="noopener">Articles Archive</a></li>
+        <li><a href="https://phantom-byte.com" target="_blank" rel="noopener">Done-for-you Services</a></li>
+        <li><a href="funnels/contact.html">Contact</a></li>
+        <li><a href="https://x.com/PhantomByteAI" target="_blank" rel="noopener">X / Twitter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>PhantomByte: Code from the Shadows.</p>
+    <p>vincentsativa.com &#169; 2026. A project by Vincent Sativa.</p>
+    <p><a href="https://articles.phantom-byte.com/privacy.html" target="_blank" rel="noopener">Privacy Policy</a> | <a href="https://articles.phantom-byte.com/terms.html" target="_blank" rel="noopener">Terms of Service</a></p>
+  </div>
+</footer>
+
+</div>
+
+<!-- Force scroll to top on load -->
+<script>
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+function forceTop() { window.scrollTo(0, 0); }
+forceTop();
+window.addEventListener('load', function() { requestAnimationFrame(forceTop); });
+window.addEventListener('pageshow', function() { requestAnimationFrame(forceTop); });
+</script>
+
+<!-- GA event on resource clicks -->
+<script>
+(function(){
+  var ga = function(){ try{ return (typeof gtag === 'function'); }catch(e){ return false; } };
+  document.querySelectorAll('a[href^="funnels/"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      if(ga()){ gtag('event','select_content',{content_type:'resource',item_id:a.href}); }
+    });
+  });
+  document.querySelectorAll('a[href*="articles.phantom-byte.com"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      if(ga()){ gtag('event','select_content',{content_type:'articles_archive',item_id:a.href}); }
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
