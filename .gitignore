@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.*
+*.key
+*.pem
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+.cache/
+dist/
+build/
+.next/
